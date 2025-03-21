@@ -1,0 +1,62 @@
+<!-- Created with WSDL to XSD Generator (https://www.UtilityArena.com) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://credable.io/cbs/customer"
+           xmlns="http://credable.io/cbs/customer"
+           elementFormDefault="qualified">
+   <xs:element name="CustomerRequest">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="customerNumber" type="xs:string"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="CustomerResponse">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="customer" type="customer"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="customer">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="createdAt" type="xs:dateTime"/>
+         <xs:element minOccurs="0" name="createdDate" type="xs:dateTime"/>
+         <xs:element minOccurs="0" name="customerNumber" type="xs:string"/>
+         <xs:element minOccurs="0" name="dob" type="xs:dateTime"/>
+         <xs:element minOccurs="0" name="email" type="xs:string"/>
+         <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+         <xs:element minOccurs="0" name="gender" type="gender"/>
+         <xs:element minOccurs="0" name="id" type="xs:long"/>
+         <xs:element minOccurs="0" name="idNumber" type="xs:string"/>
+         <xs:element minOccurs="0" name="idType" type="idType"/>
+         <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+         <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+         <xs:element minOccurs="0" name="mobile" type="xs:string"/>
+         <xs:element name="monthlyIncome" type="xs:double"/>
+         <xs:element minOccurs="0" name="status" type="status"/>
+         <xs:element minOccurs="0" name="updatedAt" type="xs:dateTime"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="gender">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="MALE"/>
+         <xs:enumeration value="FEMALE"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="idType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="PASSPORT"/>
+         <xs:enumeration value="NATIONAL_ID"/>
+         <xs:enumeration value="DRIVERS_LICENSE"/>
+         <xs:enumeration value="VOTERS_ID"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="status">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="ACTIVE"/>
+         <xs:enumeration value="INACTIVE"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>
+<!--##SCHEMAEND##-->
+
