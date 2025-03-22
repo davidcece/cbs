@@ -130,39 +130,29 @@
                 </configuration>
             </plugin>
 
-            <!-- JAX-WS Maven Plugin -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.6</version>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-xjc-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
-                        <id>wsimport-kyc</id>
+                        <id>xjc</id>
                         <phase>generate-sources</phase>
                         <goals>
-                            <goal>wsimport</goal>
+                            <goal>xsdtojava</goal>
                         </goals>
                         <configuration>
-                            <wsdlUrls>
-                                <wsdlUrl>https://kycapitest.credable.io/service/customerWsdl.wsdl</wsdlUrl>
-                            </wsdlUrls>
-                            <packageName>com.credable.soap.kyc</packageName>
-                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>wsimport-transactions</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlUrls>
-                                <wsdlUrl>https://trxapitest.credable.io/service/transactionWsdl.wsdl</wsdlUrl>
-                            </wsdlUrls>
-                            <packageName>com.credable.soap.transactions</packageName>
-                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+                            <xsdOptions>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/customer.xsd</xsd>
+                                    <packagename>com.credable.soap.kyc</packagename>
+                                </xsdOption>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/transaction.xsd</xsd>
+                                    <packagename>com.credable.soap.transactions</packagename>
+                                </xsdOption>
+                            </xsdOptions>
+                            <sourceRoot>${project.build.directory}/generated-sources/xsd</sourceRoot>
                         </configuration>
                     </execution>
                 </executions>
